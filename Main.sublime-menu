@@ -1,0 +1,54 @@
+[
+    {
+        "id": "preferences",
+        "children":
+        [
+            {
+                "id": "package-settings",
+                "children":
+                [
+                    {
+                        "caption": "ExecutionMode",
+                        "children":
+                        [
+                            {
+                                "caption": "README",
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/ExecutionMode/README.md"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "Settings – Default",
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/ExecutionMode/ExecutionMode.sublime-settings"
+                                }
+                            },
+                            {
+                                "caption": "Settings – User",
+                                "command": "open_file", "args":
+                                {
+                                    "file": "${packages}/User/ExecutionMode.sublime-settings"
+                                }
+                            },
+                            {
+                                "caption": "-"
+                            },
+                            {
+                                "caption": "LICENSE",
+                                "command": "open_file",
+                                "args": {
+                                    "file": "${packages}/ExecutionMode/LICENSE"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
