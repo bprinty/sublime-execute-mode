@@ -50,7 +50,7 @@ class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
 
                 # update selection
                 with open(uu + '-post', 'r') as fi:
-                    self.view.replace(edit, region, fi.read())
+                    self.view.replace(edit, region, fi.read().rstrip())
 
                 # clean
                 os.remove(uu + '-pre')
