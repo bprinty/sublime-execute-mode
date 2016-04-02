@@ -8,7 +8,6 @@
 
 # imports
 # -------
-# external
 import sublime, sublime_plugin
 import logging
 import os
@@ -20,6 +19,7 @@ import subprocess
 # ------
 __version__ = '0.0.1'
 __author__ = 'bprinty@gmail.com'
+settings = sublime.load_settings('ExecutionMode.sublime-settings')
 
 
 # classes
@@ -41,10 +41,18 @@ class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
                 with open(uu + '-pre', 'w') as fi:
                     fi.write(self.view.substr(region))
 
+                # write command to script
+                shell = settings.get('default_shell', 'bash')
+                with open(uu + '.sh', 'w') as fi:
+                    fi.write('\n'.join([
+                        '#!{}'.format(shell),
+                        kwargs['cmd']
+                    ]))
+
                 # cat file and pipe into command
                 fesc = uu.replace(' ', '\ ')
                 proc = subprocess.check_output(
-                    'cat {} | SHELL={} {} > {}'.format(fesc + '-pre', 'bash', kwargs['cmd'], fesc + '-post'),
+                    'sh {} < {} > {}'.format(fesc + '.sh', fesc + '-pre', fesc + '-post'),
                     shell=True
                 )
 
@@ -55,6 +63,7 @@ class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
                 # clean
                 os.remove(uu + '-pre')
                 os.remove(uu + '-post')
+                os.remove(uu + '.sh')
         return
 
 
@@ -63,25 +72,21 @@ class ExecutionModeCommand(sublime_plugin.WindowCommand):
     Run bash command for block of highlighted text.
     """
 
-    def execute(self, command):
-        """
-        Execute command through shell.
-        """
-        if command == '':
-            return
-
-        view = self.window.active_view()
-        view.run_command('execution_mode_replace', {'cmd': command})
-        return
-
     def run(self):
         """
-        Main logic for managing quick panel.
+        Main logic for managing window command.
         """
-        sublime.set_timeout(lambda: self.window.show_input_panel(
-            '~$',
-            '',
-            self.execute, None, None
-        ), 0)
+        def execute(command):
+            if command == '':
+                return
+            view = self.window.active_view()
+            view.run_command('execution_mode_replace', {'cmd': command})
+            return
+
+        sublime.set_timeout(
+            lambda: self.window.show_input_panel(
+                '~$', '', execute, None, None
+            ), 0
+        )
         return
 
