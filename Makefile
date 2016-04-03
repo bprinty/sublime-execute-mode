@@ -8,7 +8,7 @@
 
 # config
 # ------
-VERSION := `python -c 'from ExecutionMode import __version__; print __version__'`
+VERSION := $$(python -c "`grep '__version__' ExecutionMode.py`; print __version__")
 
 
 # targets
@@ -23,6 +23,7 @@ test:
 
 
 release: test
-	TAG=${VERSION} && git tag -d $(TAG) || echo "local tag available"
-	TAG=${VERSION} && git push origin :$(TAG) || echo "remote tag available"
-	TAG=${VERSION} && git tag $(TAG) && git push origin $(TAG)
+	TAG=${VERSION} && git tag -d $$TAG || echo "local tag available"
+	TAG=${VERSION} && git tag $$TAG
+	TAG=${VERSION} && git push origin :$$TAG || echo "remote tag available"
+	TAG=${VERSION} && git push origin $$TAG
