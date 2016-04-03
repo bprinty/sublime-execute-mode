@@ -8,8 +8,8 @@
 
 # imports
 # -------
-import sublime, sublime_plugin
-import logging
+import sublime
+import sublime_plugin
 import os
 import uuid
 import subprocess
@@ -51,8 +51,12 @@ class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
 
                 # cat file and pipe into command
                 fesc = uu.replace(' ', '\ ')
-                proc = subprocess.check_output(
-                    'sh {} < {} > {}'.format(fesc + '.sh', fesc + '-pre', fesc + '-post'),
+                subprocess.check_output(
+                    'sh {} < {} > {}'.format(
+                        fesc + '.sh',
+                        fesc + '-pre',
+                        fesc + '-post'
+                    ),
                     shell=True
                 )
 
@@ -89,4 +93,3 @@ class ExecutionModeCommand(sublime_plugin.WindowCommand):
             ), 0
         )
         return
-
