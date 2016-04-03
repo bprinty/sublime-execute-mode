@@ -8,14 +8,14 @@
                 "children":
                 [
                     {
-                        "caption": "ExecutionMode",
+                        "caption": "ExecuteMode",
                         "children":
                         [
                             {
                                 "caption": "README",
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/ExecutionMode/README.md"
+                                    "file": "${packages}/ExecuteMode/README.md"
                                 }
                             },
                             {
@@ -25,14 +25,14 @@
                                 "caption": "Settings – Default",
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/ExecutionMode/ExecutionMode.sublime-settings"
+                                    "file": "${packages}/ExecuteMode/ExecuteMode.sublime-settings"
                                 }
                             },
                             {
                                 "caption": "Settings – User",
                                 "command": "open_file", "args":
                                 {
-                                    "file": "${packages}/User/ExecutionMode.sublime-settings"
+                                    "file": "${packages}/User/ExecuteMode.sublime-settings"
                                 }
                             },
                             {
@@ -42,7 +42,7 @@
                                 "caption": "LICENSE",
                                 "command": "open_file",
                                 "args": {
-                                    "file": "${packages}/ExecutionMode/LICENSE"
+                                    "file": "${packages}/ExecuteMode/LICENSE"
                                 }
                             }
                         ]

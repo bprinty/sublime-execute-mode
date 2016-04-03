@@ -1,7 +1,7 @@
-sublime-execution-mode
+sublime-execute-mode
 ======
 
-Wouldn't you love to use vim execution mode in sublime? Well now you can! 
+Wouldn't you love to use vim execute mode in sublime? Well now you can! 
 
 
 Status
@@ -14,7 +14,7 @@ Installation
 This project isn't yet hosted on package control, so it has to be installed manually (for now). To install this package, clone the repository:
 
 ```bash
-git clone git@github.com:bprinty/sublime-execution-mode.git
+git clone git@github.com:bprinty/sublime-execute-mode.git
 ```
 
 into your sublime ```Packages/``` folder.

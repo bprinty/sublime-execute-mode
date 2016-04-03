@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 #
-# Makefile for SublimeConfluence plugin 
+# Makefile for SublimeExecuteMode plugin 
 # 
 # @author <bprinty@gmail.com>
 # ------------------------------------------------
@@ -8,7 +8,7 @@
 
 # config
 # ------
-VERSION := $$(python -c "`grep '__version__' ExecutionMode.py`; print __version__")
+VERSION := $$(python -c "`grep '__version__' ExecuteMode.py`; print __version__")
 
 
 # targets
@@ -24,4 +24,4 @@ release:
 	TAG=${VERSION} && git push origin $$TAG
 
 lint:
-	flake8 ExecutionMode.py
+	flake8 ExecuteMode.py

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# vim execution mode, for sublime.
+# vim execute mode, for sublime.
 #
 # @author <bprinty@gmail.com>
 # ----------------------------------------------------------
@@ -19,19 +19,19 @@ import subprocess
 # ------
 __version__ = '0.0.1'
 __author__ = 'bprinty@gmail.com'
-settings = sublime.load_settings('ExecutionMode.sublime-settings')
+settings = sublime.load_settings('ExecuteMode.sublime-settings')
 
 
 # classes
 # -------
-class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
+class ExecuteModeReplaceCommand(sublime_plugin.TextCommand):
     """
     Run bash command for block of highlighted text.
     """
 
     def run(self, edit, **kwargs):
         """
-        Execute replace command for execution mode.
+        Execute replace command for execute mode.
         """
         for region in self.view.sel():
             if not region.empty():
@@ -71,7 +71,7 @@ class ExecutionModeReplaceCommand(sublime_plugin.TextCommand):
         return
 
 
-class ExecutionModeCommand(sublime_plugin.WindowCommand):
+class ExecuteModeCommand(sublime_plugin.WindowCommand):
     """
     Run bash command for block of highlighted text.
     """
@@ -84,7 +84,7 @@ class ExecutionModeCommand(sublime_plugin.WindowCommand):
             if command == '':
                 return
             view = self.window.active_view()
-            view.run_command('execution_mode_replace', {'cmd': command})
+            view.run_command('execute_mode_replace', {'cmd': command})
             return
 
         sublime.set_timeout(

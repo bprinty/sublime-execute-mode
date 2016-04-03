@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# tests for sublime execution mode
+# tests for sublime execute mode
 #
 # @author <bprinty@gmail.com>
 # ----------------------------------------------------------
@@ -9,7 +9,6 @@
 # imports
 # -------
 import sublime
-import sys
 from unittest import TestCase
 
 # config
@@ -49,7 +48,7 @@ class Base(TestCase):
     def test_simple_command(self):
         self.setText('\n'.join(['foo', 'bar', 'baz']))
         self.selectAll()
-        self.view.run_command('execution_mode_replace', {'cmd': 'grep "bar"'})
+        self.view.run_command('execute_mode_replace', {'cmd': 'grep "bar"'})
         first_row = self.getRow(0)
         self.assertEqual(first_row, 'bar')
         return
@@ -58,10 +57,9 @@ class Base(TestCase):
         self.setText('\n'.join(['foo', 'bar', 'foo', 'baz']))
         self.selectAll()
         self.view.run_command(
-            'execution_mode_replace',
+            'execute_mode_replace',
             {'cmd': 'sort | uniq -c | grep "2"'}
         )
         first_row = self.getRow(0)
         self.assertEqual(first_row, '   2 foo')
         return
-

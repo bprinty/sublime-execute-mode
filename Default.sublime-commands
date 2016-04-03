@@ -1,6 +1,6 @@
 [
     {
-        "caption": "ExecutionMode: Execute Command",
-        "command": "execution_mode"
+        "caption": "ExecuteMode: Execute Command",
+        "command": "execute_mode"
     }
 ]
